@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation Example</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["name"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var password = document.forms["myForm"]["password"].value;
+            var confirmPassword = document.forms["myForm"]["confirmPassword"].value;
+
+            // Check if name is empty
+            if (name === "") {
+                alert("Name must be filled out");
+                return false;
+            }
+
+            // Check if email is empty
+            if (email === "") {
+                alert("Email must be filled out");
+                return false;
+            }
+
+            // Check if password is empty
+            if (password === "") {
+                alert("Password must be filled out");
+                return false;
+            }
+
+            // Check if confirm password is empty
+            if (confirmPassword === "") {
+                alert("Confirm Password must be filled out");
+                return false;
+            }
+
+            // Check if password and confirm password match
+            if (password !== confirmPassword) {
+                alert("Password and Confirm Password must match");
+                return false;
+            }
+
+            // Check if email is valid using regular expression
+            var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (!email.match(emailPattern)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Form Validation Example</h2>
+    <form name="myForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
